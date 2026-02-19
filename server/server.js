@@ -16,7 +16,7 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? true : ['http://localhost:3000', 'http://localhost:5173'],
+  origin: '*', // Allow all origins for debugging
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -30,6 +30,16 @@ app.use('/api/audit', auditRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+app.get('/api/debug', (req, res) => {
+  res.json({
+    status: 'Debug Active',
+    env: process.env.NODE_ENV,
+    hasDbUrl: !!process.env.DATABASE_URL1,
+    hasJwtSecret: !!process.env.JWT_SECRET1,
+    timestamp: new Date().toISOString()
+  });
 });
 
 const PORT = process.env.PORT || 5000;
