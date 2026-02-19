@@ -36,11 +36,15 @@ const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await connectDB();
-  
+
   app.listen(PORT, () => {
     console.log(`🚀 Banking Server running on port ${PORT}`);
     console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 };
 
-startServer().catch(console.error);
+if (process.env.NODE_ENV !== 'production') {
+  startServer().catch(console.error);
+}
+
+module.exports = app;
