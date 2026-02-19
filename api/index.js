@@ -8,6 +8,9 @@ process.env.JWT_SECRET1 = process.env.JWT_SECRET1 || jwtSecret;
 process.env.JWT_EXPIRY = process.env.JWT_EXPIRY || '24h';
 process.env.NODE_ENV = "production";
 
+const app = require('../server/server');
+const { connectDB } = require('../server/config/database');
+
 // Ensure database connects in serverless environment
 connectDB();
 
