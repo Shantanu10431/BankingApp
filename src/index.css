@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* SBI Banking Theme Custom Styles */
+
+:root {
+  --sbi-blue: #1a4fa3;
+  --sbi-blue-dark: #0d3a7a;
+  --sbi-blue-light: #e8f0fe;
+  --sbi-green: #28a745;
+  --sbi-red: #dc3545;
+  --sbi-orange: #f57c00;
+  --sbi-gray: #f5f5f5;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--sbi-gray);
+}
+
+/* Custom Button Styles */
+.btn-sbi {
+  background-color: var(--sbi-blue);
+  border-color: var(--sbi-blue);
+  color: white;
+}
+
+.btn-sbi:hover {
+  background-color: var(--sbi-blue-dark);
+  border-color: var(--sbi-blue-dark);
+  color: white;
+}
+
+.btn-sbi-outline {
+  border-color: var(--sbi-blue);
+  color: var(--sbi-blue);
+}
+
+.btn-sbi-outline:hover {
+  background-color: var(--sbi-blue);
+  color: white;
+}
+
+/* Card Enhancements */
+.card {
+  border-radius: 8px;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+}
+
+/* Table Styles */
+.table th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Form Controls */
+.form-control:focus {
+  border-color: var(--sbi-blue);
+  box-shadow: 0 0 0 0.2rem rgba(26, 79, 163, 0.25);
+}
+
+/* Badge Styles */
+.badge {
+  font-weight: 500;
+  padding: 0.4em 0.6em;
+}
+
+/* Navbar Customization */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Active Link */
+.nav-link.active {
+  background-color: var(--sbi-blue-light) !important;
+  color: var(--sbi-blue) !important;
+  border-left-color: var(--sbi-blue) !important;
+}
+
+/* Pagination */
+.page-item.active .page-link {
+  background-color: var(--sbi-blue);
+  border-color: var(--sbi-blue);
+}
+
+.page-link {
+  color: var(--sbi-blue);
+}
+
+.page-link:hover {
+  color: var(--sbi-blue-dark);
+}
+
+/* Modal */
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Alerts */
+.alert {
+  border-radius: 8px;
+  border: none;
+}
+
+/* Dropdown */
+.dropdown-item:active {
+  background-color: var(--sbi-blue);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Loading Spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .sidebar,
+  .btn {
+    display: none !important;
+  }
+}
