@@ -20,7 +20,7 @@ const register = async (req, res) => {
 
     let accountNumber;
     let isUnique = false;
-    
+
     while (!isUnique) {
       accountNumber = generateAccountNumber();
       const existing = await prisma.user.findUnique({
@@ -56,7 +56,7 @@ const register = async (req, res) => {
 
     const token = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET1,
       { expiresIn: process.env.JWT_EXPIRY }
     );
 
@@ -104,7 +104,7 @@ const login = async (req, res) => {
 
     const token = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET1,
       { expiresIn: process.env.JWT_EXPIRY }
     );
 
