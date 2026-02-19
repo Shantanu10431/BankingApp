@@ -34,10 +34,13 @@ app.get('/api/health', (req, res) => {
 
 app.get('/api/debug', (req, res) => {
   res.json({
-    status: 'Debug Active',
+    status: 'Debug Active v2',
     env: process.env.NODE_ENV,
     hasDbUrl: !!process.env.DATABASE_URL1,
     hasJwtSecret: !!process.env.JWT_SECRET1,
+    // precise-check: Check string length to verify it's not empty string
+    dbUrlLength: process.env.DATABASE_URL1 ? process.env.DATABASE_URL1.length : 0,
+    availableEnvKeys: Object.keys(process.env), // List all keys to see what IS there
     timestamp: new Date().toISOString()
   });
 });
