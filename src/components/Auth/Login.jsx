@@ -22,7 +22,11 @@ const Login = () => {
       login(response.data.user, response.data.token);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      console.error('Login error:', err);
+      const errorMessage = err.response?.data?.message
+        ? `Error: ${err.response.data.message}`
+        : `Login Failed (${err.message})`;
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

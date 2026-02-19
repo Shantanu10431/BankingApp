@@ -15,10 +15,7 @@ const auditRoutes = require('./services/audit/audit.routes');
 const app = express();
 
 app.use(helmet());
-app.use(cors({
-  origin: '*', // Allow all origins for debugging
-  credentials: true
-}));
+app.use(cors()); // Allow all origins by default for Vercel/Serverless compatibility
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 

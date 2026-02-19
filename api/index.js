@@ -5,6 +5,7 @@ const jwtSecret = Buffer.from("c2JpLWJhbmtpbmctc2VjdXJlLWp3dC1zZWNyZXQta2V5LTIwM
 
 process.env.DATABASE_URL1 = process.env.DATABASE_URL1 || dbUrl;
 process.env.JWT_SECRET1 = process.env.JWT_SECRET1 || jwtSecret;
+process.env.JWT_EXPIRY = process.env.JWT_EXPIRY || '24h';
 process.env.NODE_ENV = "production";
 
 // Ensure database connects in serverless environment
