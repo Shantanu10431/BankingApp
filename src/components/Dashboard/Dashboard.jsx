@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Card, Table, Button, Badge, Spinner } from 'react-bootstrap';
+import { Row, Col, Button, Table, Spinner, Badge } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import { userAPI } from '../../services/api';
-import { 
-  Wallet, 
-  ArrowDownCircle, 
-  ArrowUpCircle, 
-  ArrowRightLeft, 
+import {
+  Wallet,
+  ArrowDownCircle,
+  ArrowUpCircle,
+  ArrowRightLeft,
   Landmark,
   CreditCard
 } from 'lucide-react';
@@ -53,7 +53,7 @@ const Dashboard = () => {
     return (
       <Layout>
         <div className="d-flex justify-content-center align-items-center" style={{ height: '60vh' }}>
-          <Spinner animation="border" variant="primary" />
+          <Spinner animation="border" variant="light" />
         </div>
       </Layout>
     );
@@ -61,59 +61,53 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <h4 className="mb-4">Account Dashboard</h4>
+      <h2 className="mb-4 text-white">Account Dashboard</h2>
 
       {/* Account Summary Cards */}
       <Row className="mb-4">
-        <Col md={4}>
-          <Card className="border-0 shadow-sm h-100">
-            <Card.Body className="d-flex align-items-center">
-              <div className="rounded-circle p-3 me-3" style={{ backgroundColor: '#e8f0fe' }}>
-                <Wallet size={24} color="#1a4fa3" />
-              </div>
-              <div>
-                <div className="text-muted small">Current Balance</div>
-                <h4 className="mb-0" style={{ color: '#1a4fa3' }}>
-                  {formatCurrency(data?.user?.balance)}
-                </h4>
-              </div>
-            </Card.Body>
-          </Card>
+        <Col md={4} className="mb-3 mb-md-0">
+          <div className="glass-card h-100 d-flex align-items-center">
+            <div className="rounded-circle p-3 me-3 bg-white bg-opacity-10">
+              <Wallet size={24} className="text-info" />
+            </div>
+            <div>
+              <div className="text-white-50 small text-uppercase fw-bold">Current Balance</div>
+              <h3 className="mb-0 text-white">
+                {formatCurrency(data?.user?.balance)}
+              </h3>
+            </div>
+          </div>
+        </Col>
+        <Col md={4} className="mb-3 mb-md-0">
+          <div className="glass-card h-100 d-flex align-items-center">
+            <div className="rounded-circle p-3 me-3 bg-white bg-opacity-10">
+              <Landmark size={24} className="text-success" />
+            </div>
+            <div>
+              <div className="text-white-50 small text-uppercase fw-bold">Account Number</div>
+              <h4 className="mb-0 text-white">{data?.user?.accountNumber}</h4>
+            </div>
+          </div>
         </Col>
         <Col md={4}>
-          <Card className="border-0 shadow-sm h-100">
-            <Card.Body className="d-flex align-items-center">
-              <div className="rounded-circle p-3 me-3" style={{ backgroundColor: '#e8f5e9' }}>
-                <Landmark size={24} color="#2e7d32" />
-              </div>
-              <div>
-                <div className="text-muted small">Account Number</div>
-                <h5 className="mb-0">{data?.user?.accountNumber}</h5>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={4}>
-          <Card className="border-0 shadow-sm h-100">
-            <Card.Body className="d-flex align-items-center">
-              <div className="rounded-circle p-3 me-3" style={{ backgroundColor: '#fff3e0' }}>
-                <CreditCard size={24} color="#f57c00" />
-              </div>
-              <div>
-                <div className="text-muted small">IFSC Code</div>
-                <h5 className="mb-0">{data?.user?.ifscCode}</h5>
-              </div>
-            </Card.Body>
-          </Card>
+          <div className="glass-card h-100 d-flex align-items-center">
+            <div className="rounded-circle p-3 me-3 bg-white bg-opacity-10">
+              <CreditCard size={24} className="text-warning" />
+            </div>
+            <div>
+              <div className="text-white-50 small text-uppercase fw-bold">IFSC Code</div>
+              <h4 className="mb-0 text-white">{data?.user?.ifscCode}</h4>
+            </div>
+          </div>
         </Col>
       </Row>
 
       {/* Quick Actions */}
+      <h5 className="text-white mb-3">Quick Actions</h5>
       <Row className="mb-4">
         <Col md={4} className="mb-3">
-          <Button 
-            variant="outline-primary" 
-            className="w-100 py-3 d-flex align-items-center justify-content-center gap-2"
+          <Button
+            className="w-100 py-3 d-flex align-items-center justify-content-center gap-2 btn-glass"
             onClick={() => navigate('/deposit')}
           >
             <ArrowDownCircle size={20} />
@@ -121,9 +115,8 @@ const Dashboard = () => {
           </Button>
         </Col>
         <Col md={4} className="mb-3">
-          <Button 
-            variant="outline-primary" 
-            className="w-100 py-3 d-flex align-items-center justify-content-center gap-2"
+          <Button
+            className="w-100 py-3 d-flex align-items-center justify-content-center gap-2 btn-glass"
             onClick={() => navigate('/withdraw')}
           >
             <ArrowUpCircle size={20} />
@@ -131,9 +124,8 @@ const Dashboard = () => {
           </Button>
         </Col>
         <Col md={4} className="mb-3">
-          <Button 
-            variant="outline-primary" 
-            className="w-100 py-3 d-flex align-items-center justify-content-center gap-2"
+          <Button
+            className="w-100 py-3 d-flex align-items-center justify-content-center gap-2 btn-glass"
             onClick={() => navigate('/transfer')}
           >
             <ArrowRightLeft size={20} />
@@ -143,64 +135,63 @@ const Dashboard = () => {
       </Row>
 
       {/* Recent Transactions */}
-      <Card className="border-0 shadow-sm">
-        <Card.Header className="bg-white d-flex justify-content-between align-items-center">
-          <h5 className="mb-0">Recent Transactions</h5>
-          <Button variant="link" onClick={() => navigate('/transactions')}>
+      <div className="glass-panel p-4">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h5 className="mb-0 text-white">Recent Transactions</h5>
+          <Button variant="link" className="text-info text-decoration-none" onClick={() => navigate('/transactions')}>
             View All
           </Button>
-        </Card.Header>
-        <Card.Body className="p-0">
-          <Table responsive hover className="mb-0">
-            <thead className="bg-light">
+        </div>
+
+        <Table responsive hover className="mb-0 text-white" style={{ '--bs-table-hover-color': 'white', '--bs-table-hover-bg': 'rgba(255,255,255,0.1)' }}>
+          <thead className="border-bottom border-secondary">
+            <tr className="text-white-50">
+              <th className="bg-transparent border-0">Date</th>
+              <th className="bg-transparent border-0">Description</th>
+              <th className="bg-transparent border-0">Type</th>
+              <th className="bg-transparent border-0 text-end">Amount</th>
+              <th className="bg-transparent border-0">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.recentTransactions?.length === 0 ? (
               <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th className="text-end">Amount</th>
-                <th>Status</th>
+                <td colSpan={5} className="text-center py-4 text-white-50 bg-transparent">
+                  No transactions yet
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {data?.recentTransactions?.length === 0 ? (
-                <tr>
-                  <td colSpan={5} className="text-center py-4 text-muted">
-                    No transactions yet
+            ) : (
+              data?.recentTransactions?.map((txn) => (
+                <tr key={txn.id} className="align-middle">
+                  <td className="text-white-50 bg-transparent border-secondary border-opacity-25">{formatDate(txn.createdAt)}</td>
+                  <td className="bg-transparent border-secondary border-opacity-25">
+                    {txn.description}
+                    {txn.sender && txn.receiver && (
+                      <div className="text-white-50 small">
+                        {txn.senderId === data.user.id
+                          ? `To: ${txn.receiver.name}`
+                          : `From: ${txn.sender.name}`
+                        }
+                      </div>
+                    )}
+                  </td>
+                  <td className="bg-transparent border-secondary border-opacity-25">
+                    <Badge bg={txn.type === 'CREDIT' ? 'success' : 'danger'} className="bg-opacity-75">
+                      {txn.type}
+                    </Badge>
+                  </td>
+                  <td className={`bg-transparent border-secondary border-opacity-25 text-end fw-bold ${txn.type === 'CREDIT' ? 'text-success' : 'text-danger'}`}>
+                    {txn.type === 'CREDIT' ? '+' : '-'}{formatCurrency(txn.amount)}
+                  </td>
+                  <td className="bg-transparent border-secondary border-opacity-25">
+                    <Badge bg="success" className="bg-opacity-75">{txn.status}</Badge>
                   </td>
                 </tr>
-              ) : (
-                data?.recentTransactions?.map((txn) => (
-                  <tr key={txn.id}>
-                    <td className="text-muted small">{formatDate(txn.createdAt)}</td>
-                    <td>
-                      {txn.description}
-                      {txn.sender && txn.receiver && (
-                        <div className="text-muted small">
-                          {txn.senderId === data.user.id 
-                            ? `To: ${txn.receiver.name}`
-                            : `From: ${txn.sender.name}`
-                          }
-                        </div>
-                      )}
-                    </td>
-                    <td>
-                      <Badge bg={txn.type === 'CREDIT' ? 'success' : 'danger'}>
-                        {txn.type}
-                      </Badge>
-                    </td>
-                    <td className={`text-end fw-medium ${txn.type === 'CREDIT' ? 'text-success' : 'text-danger'}`}>
-                      {txn.type === 'CREDIT' ? '+' : '-'}{formatCurrency(txn.amount)}
-                    </td>
-                    <td>
-                      <Badge bg="success">{txn.status}</Badge>
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </Table>
-        </Card.Body>
-      </Card>
+              ))
+            )}
+          </tbody>
+        </Table>
+      </div>
     </Layout>
   );
 };

@@ -5,7 +5,8 @@ import Header from './Header';
 
 const Layout = ({ children }) => {
   return (
-    <div className="sbi-app" style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <div className="sbi-app">
+      {/* Header and Sidebar will now sit on top of the fixed body background */}
       <Header />
       <Container fluid className="p-0">
         <Row className="g-0">

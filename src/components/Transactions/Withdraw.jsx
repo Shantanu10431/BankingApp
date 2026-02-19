@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Card, Alert, Row, Col, Spinner } from 'react-bootstrap';
+import { Form, Button, Alert, Row, Col, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import { transactionAPI, authAPI } from '../../services/api';
@@ -70,21 +70,21 @@ const Withdraw = () => {
       <Layout>
         <Row className="justify-content-center">
           <Col md={6}>
-            <Card className="border-0 shadow-sm text-center p-5">
-              <CheckCircle size={64} color="#28a745" className="mx-auto mb-3" />
-              <h4>Withdrawal Successful!</h4>
-              <p className="text-muted">
+            <div className="glass-card text-center p-5">
+              <CheckCircle size={64} className="text-success mx-auto mb-3" />
+              <h4 className="text-white">Withdrawal Successful!</h4>
+              <p className="text-white-50">
                 Amount: ₹{parseFloat(amount).toLocaleString('en-IN')}
               </p>
-              <p className="text-muted">
+              <p className="text-white-50">
                 New Balance: ₹{parseFloat(newBalance).toLocaleString('en-IN')}
               </p>
               <div className="d-flex gap-3 justify-content-center mt-4">
-                <Button variant="primary" onClick={() => navigate('/dashboard')}>
+                <Button className="btn-glass" onClick={() => navigate('/dashboard')}>
                   Go to Dashboard
                 </Button>
               </div>
-            </Card>
+            </div>
           </Col>
         </Row>
       </Layout>
@@ -95,25 +95,25 @@ const Withdraw = () => {
     <Layout>
       <Row className="justify-content-center">
         <Col md={6}>
-          <Card className="border-0 shadow-sm">
-            <Card.Header className="bg-white">
+          <div className="glass-card p-0">
+            <div className="p-4 border-bottom border-secondary border-opacity-25">
               <div className="d-flex align-items-center justify-content-between">
                 <div className="d-flex align-items-center gap-2">
-                  <ArrowUpCircle size={24} color="#dc3545" />
-                  <h5 className="mb-0">Withdraw Funds</h5>
+                  <ArrowUpCircle size={24} className="text-danger" />
+                  <h5 className="mb-0 text-white">Withdraw Funds</h5>
                 </div>
-                <div className="d-flex align-items-center gap-2 text-muted">
+                <div className="d-flex align-items-center gap-2 text-white-50">
                   <Wallet size={18} />
                   <span>Balance: ₹{balance.toLocaleString('en-IN')}</span>
                 </div>
               </div>
-            </Card.Header>
-            <Card.Body className="p-4">
-              {error && <Alert variant="danger">{error}</Alert>}
+            </div>
+            <div className="p-4">
+              {error && <Alert variant="danger" className="bg-danger bg-opacity-25 text-white border-danger border-opacity-50">{error}</Alert>}
 
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-4">
-                  <Form.Label className="fw-medium">Amount (₹)</Form.Label>
+                  <Form.Label className="fw-medium text-white">Amount (₹)</Form.Label>
                   <Form.Control
                     type="number"
                     value={amount}
@@ -122,29 +122,31 @@ const Withdraw = () => {
                     min="1"
                     max={balance}
                     placeholder="Enter amount to withdraw"
-                    style={{ fontSize: '1.1rem', padding: '12px' }}
+                    className="form-control"
+                    style={{ fontSize: '1.2rem', padding: '12px' }}
                   />
-                  <Form.Text className="text-muted">
+                  <Form.Text className="text-white-50">
                     Maximum withdrawal: ₹1,00,000 per transaction
                   </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-4">
-                  <Form.Label>Description (Optional)</Form.Label>
+                  <Form.Label className="text-white">Description (Optional)</Form.Label>
                   <Form.Control
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="e.g., ATM withdrawal"
+                    className="form-control"
                   />
                 </Form.Group>
 
                 <div className="d-flex gap-3">
                   <Button
                     type="submit"
-                    variant="danger"
+                    className="flex-grow-1 btn-glass"
+                    style={{ background: 'linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)' }} // specific danger gradient
                     disabled={loading || balance <= 0}
-                    className="flex-grow-1"
                   >
                     {loading ? (
                       <>
@@ -156,15 +158,16 @@ const Withdraw = () => {
                     )}
                   </Button>
                   <Button
-                    variant="outline-secondary"
+                    variant="link"
+                    className="text-white-50 text-decoration-none"
                     onClick={() => navigate('/dashboard')}
                   >
                     Cancel
                   </Button>
                 </div>
               </Form>
-            </Card.Body>
-          </Card>
+            </div>
+          </div>
         </Col>
       </Row>
     </Layout>
