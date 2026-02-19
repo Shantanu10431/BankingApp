@@ -56,7 +56,7 @@ const startServer = async () => {
   });
 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (require.main === module) {
   startServer().catch(console.error);
 }
 

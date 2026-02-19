@@ -19,8 +19,8 @@ const getDashboard = async (req, res) => {
     const recentTransactions = await prisma.transaction.findMany({
       where: {
         OR: [
-          { senderId: req.user.id },
-          { receiverId: req.user.id }
+          { senderId: req.user.id, type: 'DEBIT' },
+          { receiverId: req.user.id, type: 'CREDIT' }
         ]
       },
       orderBy: { createdAt: 'desc' },
@@ -50,8 +50,8 @@ const getAllTransactions = async (req, res) => {
       prisma.transaction.findMany({
         where: {
           OR: [
-            { senderId: req.user.id },
-            { receiverId: req.user.id }
+            { senderId: req.user.id, type: 'DEBIT' },
+            { receiverId: req.user.id, type: 'CREDIT' }
           ]
         },
         orderBy: { createdAt: 'desc' },
@@ -65,8 +65,8 @@ const getAllTransactions = async (req, res) => {
       prisma.transaction.count({
         where: {
           OR: [
-            { senderId: req.user.id },
-            { receiverId: req.user.id }
+            { senderId: req.user.id, type: 'DEBIT' },
+            { receiverId: req.user.id, type: 'CREDIT' }
           ]
         }
       })
