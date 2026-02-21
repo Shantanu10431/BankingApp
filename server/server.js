@@ -11,6 +11,7 @@ const userRoutes = require('./services/user/user.routes');
 const transactionRoutes = require('./services/transaction/transaction.routes');
 const adminRoutes = require('./services/admin/admin.routes');
 const auditRoutes = require('./services/audit/audit.routes');
+const chatRoutes = require('./services/chat/chat.routes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api/user', userRoutes);
 app.use('/api/transaction', transactionRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/audit', auditRoutes);
+app.use('/api/chat', chatRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });

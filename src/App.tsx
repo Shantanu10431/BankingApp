@@ -17,6 +17,7 @@ import Profile from './components/Profile/Profile';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import UserManagement from './components/Admin/UserManagement';
 import AuditLogs from './components/Admin/AuditLogs';
+import ChatBot from './components/ChatBot';
 
 const App: React.FC = () => {
   return (
@@ -26,7 +27,7 @@ const App: React.FC = () => {
           {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
+
           {/* Protected User Routes */}
           <Route path="/dashboard" element={
             <ProtectedRoute>
@@ -58,7 +59,7 @@ const App: React.FC = () => {
               <Profile />
             </ProtectedRoute>
           } />
-          
+
           {/* Admin Routes */}
           <Route path="/admin" element={
             <ProtectedRoute adminOnly>
@@ -75,11 +76,12 @@ const App: React.FC = () => {
               <AuditLogs />
             </ProtectedRoute>
           } />
-          
+
           {/* Default Routes */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
+        <ChatBot />
       </Router>
     </AuthProvider>
   );
