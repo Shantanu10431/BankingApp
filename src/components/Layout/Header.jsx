@@ -14,7 +14,7 @@ const Header = () => {
             <Building2 size={24} color="#1a4fa3" />
           </div>
           <div>
-            <div className="fw-bold" style={{ fontSize: '1.2rem', letterSpacing: '0.5px' }}>STATE BANK OF INDIA</div>
+            <div className="fw-bold" style={{ fontSize: '1.2rem', letterSpacing: '0.5px' }}>AKIRA BANK</div>
             <div style={{ fontSize: '0.7rem', opacity: 0.8, letterSpacing: '2px' }} className="text-uppercase">Internet Banking</div>
           </div>
         </Navbar.Brand>
