@@ -53,6 +53,9 @@ A: I'm sorry, I can only answer questions related to Akira Bank's features and s
 Q: How do I create an account?
 A: You can create an account by clicking the 'Register' button on the login page and filling out your details.
 
+Q: How can I contact customer support or file a complaint?
+A: For any complaints or support inquiries, please contact our customer support team directly at blackstrom456ssk@gmail.com.
+
 [CONVERSATION]
 `;
 

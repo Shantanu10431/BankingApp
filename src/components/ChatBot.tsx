@@ -105,9 +105,13 @@ const ChatBot: React.FC = () => {
                             >
                                 <span className="small text-muted mb-1">{msg.type === 'user' ? 'You' : 'Bot'}</span>
                                 <div
-                                    className={`p-2 rounded-3 text-wrap text-break ${msg.type === 'user' ? 'bg-primary text-white' : 'bg-white border text-dark'
+                                    className={`p-2 rounded-3 text-wrap text-break ${msg.type === 'user' ? 'bg-primary' : 'bg-white border'
                                         }`}
-                                    style={{ maxWidth: '85%', fontSize: '0.9rem' }}
+                                    style={{
+                                        maxWidth: '85%',
+                                        fontSize: '0.9rem',
+                                        color: msg.type === 'user' ? '#ffffff' : '#000000'
+                                    }}
                                 >
                                     {msg.text}
                                 </div>
@@ -116,7 +120,10 @@ const ChatBot: React.FC = () => {
                         {isLoading && (
                             <div className="d-flex align-items-start flex-column">
                                 <span className="small text-muted mb-1">Bot</span>
-                                <div className="p-2 rounded-3 text-wrap text-break bg-white border text-dark" style={{ maxWidth: '85%', fontSize: '0.9rem' }}>
+                                <div
+                                    className="p-2 rounded-3 text-wrap text-break bg-white border"
+                                    style={{ maxWidth: '85%', fontSize: '0.9rem', color: '#000000' }}
+                                >
                                     <div className="spinner-border spinner-border-sm text-primary" role="status">
                                         <span className="visually-hidden">Loading...</span>
                                     </div>
