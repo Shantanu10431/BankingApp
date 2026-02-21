@@ -60,6 +60,15 @@ const ChatBot: React.FC = () => {
 
     return (
         <>
+            <style>{`
+                .chat-input-force-black {
+                    color: #000000 !important;
+                    background-color: #ffffff !important;
+                }
+                .chat-input-force-black::placeholder {
+                    color: #6c757d !important;
+                }
+            `}</style>
             <div className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 1050 }}>
                 {!isOpen && (
                     <button
@@ -138,8 +147,7 @@ const ChatBot: React.FC = () => {
                         <form onSubmit={sendMessage} className="d-flex gap-2">
                             <input
                                 type="text"
-                                className="form-control text-dark"
-                                style={{ backgroundColor: '#ffffff', color: '#000000' }}
+                                className="form-control chat-input-force-black"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Ask about bank services..."
