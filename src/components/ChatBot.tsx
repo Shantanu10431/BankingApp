@@ -147,7 +147,8 @@ const ChatBot: React.FC = () => {
                         <form onSubmit={sendMessage} className="d-flex gap-2">
                             <input
                                 type="text"
-                                className="form-control chat-input-force-black"
+                                className="chat-input-force-black flex-grow-1 border rounded px-3 py-2"
+                                style={{ outline: 'none' }}
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Ask about bank services..."
