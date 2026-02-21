@@ -58,7 +58,7 @@ A: You can create an account by clicking the 'Register' button on the login page
 
         // Try to fetch from HF with dynamic import to support node-fetch if needed (Node 18+ has native fetch)
         const response = await fetch(
-            "https://api-inference.huggingface.co/models/microsoft/Phi-3-mini-4k-instruct",
+            "https://router.huggingface.co/v1/chat/completions",
             {
                 method: "POST",
                 headers: {
@@ -66,29 +66,21 @@ A: You can create an account by clicking the 'Register' button on the login page
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    inputs: systemPrompt + "\nUser: " + message
+                    model: "meta-llama/Llama-3.2-3B-Instruct",
+                    messages: [
+                        { role: "system", content: systemPrompt },
+                        { role: "user", content: message }
+                    ],
+                    max_tokens: 300
                 })
             }
         );
 
         const data = await response.json();
 
-        // The API might return an array of objects or an error object
-        if (response.ok && Array.isArray(data) && data.length > 0) {
-            // The model often includes the prompt in generated_text. 
-            // Phi-3 might return generated_text: "system prompt\nUser: message\nAssistant: response"
-            // Let's grab the raw text and do basic cleaning if it just replays the prompt
-            let replyText = data[0].generated_text;
-
-            // Basic extraction if the model repeats the prompt
-            const splitToken = "User: " + message;
-            if (replyText.includes(splitToken)) {
-                const parts = replyText.split(splitToken);
-                if (parts.length > 1) {
-                    replyText = parts[1].replace(/^\n(Bot|Assistant):\s*/i, '').trim();
-                }
-            }
-
+        // The exact OpenAI format returns the response in data.choices[0].message.content
+        if (response.ok && data.choices && data.choices.length > 0) {
+            const replyText = data.choices[0].message.content.trim();
             return res.json({ reply: replyText || "Sorry, I couldn't process that." });
         } else {
             console.error("HF API Error:", data);
