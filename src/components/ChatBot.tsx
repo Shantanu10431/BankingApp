@@ -81,7 +81,7 @@ const ChatBot: React.FC = () => {
                     <div className="bg-primary text-white p-3 d-flex justify-content-between align-items-center rounded-top">
                         <div className="d-flex align-items-center gap-2">
                             <Bot size={24} />
-                            <h5 className="mb-0 fw-semibold">Bank AI Assistant</h5>
+                            <h5 className="mb-0 fw-semibold">Akira Assist</h5>
                         </div>
                         <button
                             onClick={() => setIsOpen(false)}
