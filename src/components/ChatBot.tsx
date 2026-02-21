@@ -10,7 +10,7 @@ const ChatBot: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [chat, setChat] = useState<ChatMessage[]>([
-        { type: 'bot', text: 'Hello! I am the XYZ Bank AI assistant. How can I help you today?' }
+        { type: 'bot', text: 'Hello! I am the Akira Bank AI assistant. How can I help you today?' }
     ]);
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -93,7 +93,7 @@ const ChatBot: React.FC = () => {
 
                     {/* Warning Banner */}
                     <div className="bg-warning text-dark px-3 py-2" style={{ fontSize: '0.8rem' }}>
-                        This assistant provides info about XYZ Bank services only. It does not access personal account data.
+                        This assistant provides info about Akira Bank services only. It does not access personal account data.
                     </div>
 
                     {/* Chat Messages */}
